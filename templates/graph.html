@@ -1,0 +1,11 @@
+{{ graph }}
+
+<h3>a cross list</h3>
+
+{% for entry in graph %}
+    <h1>{{ entry.name }} </h1>
+    {% if entry.foods %}
+        <p>{{ entry.foods }}</p>
+    {% endif %}
+{% endfor %}
+
