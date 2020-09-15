@@ -1,0 +1,28 @@
+extends base.jade
+
+block body
+  .container
+    table.table.table-sm.table-striped.table-bordered
+      caption Task Master (clone)
+      thead
+        tr.thead-dark
+          th Task
+          th Added
+          th Actions
+      tbody
+      each post in posts
+        tr
+          td= post.content
+          td= post.date_created.date()
+          td
+            a(href="/update/#{post.id}") Update
+            br
+            a(href="/delete/#{post.id}") Delete
+    .form
+      form(action="/", method="POST")
+        .form-group.row
+          .col-sm-6
+            input(type="text", name="content", id="content").form-control
+          .col-sm-6
+            input(type="submit", value="Add Task").btn.btn-primary
+

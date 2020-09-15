@@ -10,15 +10,17 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///clone.db"
+app.jinja_env.add_extension("pyjade.ext.jinja.PyJadeExtension")
+
 db = SQLAlchemy(app)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(200), nullable=False)
+    content = db.Column(db.String(200), default="Lorem ipsum",  nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
-        return "<Post %r>" % self.id
+        return "<POST %r>" % self.id
 
 @app.route("/", methods=['GET','POST'])
 def index():
@@ -29,7 +31,7 @@ def index():
         try:
             db.session.add(post)
             db.session.commit()
-            return redirect("index")
+            return redirect("/")
         except:
             return "There was an error adding post"
     
