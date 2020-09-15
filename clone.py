@@ -1,8 +1,10 @@
-from flask import Flask,\
-                  redirect,\
-                  render_template,\
-                  request,\
-                  url_for,
+from flask import (
+    Flask,
+    redirect,
+    render_template,
+    request,
+    url_for,
+)
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -15,7 +17,7 @@ class Post(db.Model):
     content = db.Column(db.String(200), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __repr__(self)
+    def __repr__(self):
         return "<Post %r>" % self.id
 
 @app.route("/", methods=['GET','POST'])
@@ -29,7 +31,7 @@ def index():
             db.session.commit()
             return redirect("index")
         except:
-            return "There was
+            return "There was an error adding post"
     
     posts = Post.query.order_by(Post.date_created).all()
     return render_template("index.jade",posts=posts)
