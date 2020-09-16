@@ -1,14 +1,52 @@
 body {
+    xborder: 2px dotted green;
     font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
-table, td, th {
+.stuff {
+    xborder: 2px solid red;
+    margin: auto 3em;
 }
 
-td {
-    word-wrap: break-word;
+.thing {
+    overflow-y: auto;
+    max-height: 95vh;
+}
+
+table {
+    xborder: 2px solid blue;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#task {
+    xwidth: 72vw;
+}
+
+#act {
+    xpadding-left: 4em;
+    xtext-align: center;
+}
+
+form {
+    display: flex;
+    width: 100%;
+}
+
+input {
+    flex: 1;
 }
 
 input[type=text] {
-    display: inline-block;
+    flex-grow: 4;
 }
+
+input[type=submit] {
+    flex-grow: 1;
+}
+

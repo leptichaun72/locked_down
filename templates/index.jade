@@ -1,28 +1,27 @@
 extends base.jade
 
 block body
-  .container
-    table.table.table-sm.table-striped.table-bordered
-      caption Task Master (clone)
-      thead
-        tr.thead-dark
-          th Task
-          th Added
-          th Actions
-      tbody
-      each post in posts
-        tr
-          td= post.content
-          td= post.date_created.date()
-          td
-            a(href="/update/#{post.id}") Update
-            br
-            a(href="/delete/#{post.id}") Delete
+  .stuff
+    .thing
+      table.table.table-sm.table-striped.table-bordered.table-hover
+        caption
+          h3 Task Master (clone)
+        thead
+          tr
+            th#task Task
+            .addact
+              th#add Added
+              th#act Action
+        tbody
+          each post in posts
+            tr
+              td= post.content
+              td= post.date_created.date()
+              td
+                a(href="/update/#{post.id}") Update
+                br
+                a(href="/delete/#{post.id}") Delete
     .form
       form(action="/", method="POST")
-        .form-group.row
-          .col-sm-6
-            input(type="text", name="content", id="content").form-control
-          .col-sm-6
-            input(type="submit", value="Add Task").btn.btn-primary
-
+        input(type="text", name="content", id="content").form-control
+        input(type="submit", value="Add Task").btn.btn-primary
