@@ -20,7 +20,11 @@ block body
               td
                 a(href="/update/#{post.id}") Update
                 br
-                a(href="/delete/#{post.id}") Delete
+                //- onclick="confirm('hello!{\n}'+'#{post.content}')"
+                a(
+                  onclick="return delme('#{post.content}')"
+                  href="/delete/#{post.id}"
+                ) Delete
     .form
       form(action="/", method="POST")
         input(type="text", name="content", id="content").form-control
